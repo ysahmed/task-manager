@@ -1,0 +1,26 @@
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+    "firstName": "klaus",
+    "lastName": "meine",
+    "email": "klaus@gg.com",
+    "password": "123456789",
+    "phone": "+880171254518"
+}
+
+###
+//login
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "klaus@gg.com",
+    "password": "123456789"
+}
+
+###
+//get user
+GET http://localhost:3000/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA1ZDkyZGQ0ZjYwOTgxYjQwODgxNmIiLCJpYXQiOjE2OTQ4ODM4MTh9.diaOuBNqpCp0aWTne-ylJvCBamG_3Rfm_m_yu4d7kQU
+
