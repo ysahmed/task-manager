@@ -41,6 +41,7 @@ const schema = new mongoose.Schema({
         minlength: 8,
         maxlength: 30,
         required: false,
+        default: null,
     },
     password: {
         type: String,
