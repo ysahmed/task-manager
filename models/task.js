@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 const schema = new mongoose.Schema({
     title: {
@@ -11,14 +12,8 @@ const schema = new mongoose.Schema({
     description: {
         type: String,
         default: null,
-        minlength: 3,
         maxlength: 1024,
         required: false,
-    },
-    dateAdded: {
-        type: Date,
-        default: () => Date.now(),
-        immutable: true,
     },
     dueDate: {
         type: Date,
@@ -45,8 +40,11 @@ const schema = new mongoose.Schema({
         maxlength: 10,
         required: false,
     },
+    userId: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: User,
+    },
 });
-
 const Task = mongoose.model('Task', schema);
 
 module.exports = Task;

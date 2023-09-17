@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const Joi = require('joi');
 const { omit } = require('lodash');
 const cook = require('../utility/jsonCooker');
@@ -15,6 +16,16 @@ const schema = Joi.object({
         .messages({ 'string.pattern.base': `Invalid phone number.` }),
     password: Joi.string().min(8).max(255).required(),
 });
+
+// validator
+async function validate(body) {
+    try {
+        await schema.validateAsync(body);
+    } catch (error) {
+        return error;
+    }
+}
+
 // add
 exports.register = async (req, res) => {
     const error = await validate(req.body);
@@ -40,12 +51,3 @@ exports.getMe = async (req, res) => {
 
     res.status(200).json(cook.success(omit(user._doc, ['__v', 'password'])));
 };
-
-// validator
-async function validate(body) {
-    try {
-        await schema.validateAsync(body);
-    } catch (error) {
-        return error;
-    }
-}

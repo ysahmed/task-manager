@@ -4,9 +4,21 @@ Content-Type: application/json
 {
     "firstName": "klaus",
     "lastName": "meine",
-    "email": "klaus@gg.com",
+    "email": "klaus@scorpions.com",
     "password": "123456789",
     "phone": "+880171254518"
+}
+
+###
+// register without phone
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+    "firstName": "Rudolf",
+    "lastName": "Schenker",
+    "email": "Rudolf@scorpions.com",
+    "password": "123456789"
 }
 
 ###
@@ -15,12 +27,61 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-    "email": "klaus@gg.com",
+    "email": "klaus@scorpions.com",
+    "password": "123456789"
+}
+
+###
+//login
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "Rudolf@scorpions.com",
     "password": "123456789"
 }
 
 ###
 //get user
 GET http://localhost:3000/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA1ZDkyZGQ0ZjYwOTgxYjQwODgxNmIiLCJpYXQiOjE2OTQ4ODM4MTh9.diaOuBNqpCp0aWTne-ylJvCBamG_3Rfm_m_yu4d7kQU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA2ZDAyMDdjZjkxY2UyNjNiZWFhMDEiLCJpYXQiOjE2OTQ5Njc1OTR9.QgJ7wMStfOm_fnBgdBN-EeTKRqGp4XRTOZPxgP8o-c8
 
+###
+// post task title only
+POST http://localhost:3000/api/v1/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA2ZDAyMDdjZjkxY2UyNjNiZWFhMDEiLCJpYXQiOjE2OTQ5Njc1OTR9.QgJ7wMStfOm_fnBgdBN-EeTKRqGp4XRTOZPxgP8o-c8
+
+{
+    "title": "Wind of Change"
+}
+
+###
+// post task 
+POST http://localhost:3000/api/v1/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA2ZDAyMDdjZjkxY2UyNjNiZWFhMDEiLCJpYXQiOjE2OTQ5Njc1OTR9.QgJ7wMStfOm_fnBgdBN-EeTKRqGp4XRTOZPxgP8o-c8
+
+{
+    "title": "Still Loving You",
+    "description": "task 2 task 2",
+    "dueDate": "2024-01-01T11:23:00.000Z",
+    "status": "complete",
+    "remindBefore":"24578412444",
+    "tags": ["important", "work"]
+}
+
+###
+// update task 
+PATCH  http://localhost:3000/api/v1/tasks/65072791e9ee97577bb089f2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA2ZDAyMDdjZjkxY2UyNjNiZWFhMDEiLCJpYXQiOjE2OTQ5Njc1OTR9.QgJ7wMStfOm_fnBgdBN-EeTKRqGp4XRTOZPxgP8o-c8
+
+{
+    "description": "Record Still Loving You"
+}
+
+###
+// delete task 
+DELETE http://localhost:3000/api/v1/tasks/6507277de9ee97577bb089f0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2xhdXMiLCJfaWQiOiI2NTA2ZDAyMDdjZjkxY2UyNjNiZWFhMDEiLCJpYXQiOjE2OTQ5Njc1OTR9.QgJ7wMStfOm_fnBgdBN-EeTKRqGp4XRTOZPxgP8o-c8
